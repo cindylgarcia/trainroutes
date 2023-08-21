@@ -1,0 +1,5 @@
+name: MBTA Routes
+type: module
+description: provide list of train routes
+package: MbtaRoutes
+core_version_requirement: ^9 || ^10

@@ -1,0 +1,13 @@
+/vendor
+/web/core
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/.DS_Store
+/sites/simpletest
+/web/.
+/web/sites/default/.DS_Store
+/web/modules/custom/.DS_Store
+
+*.sql.gz
