@@ -54,6 +54,7 @@ class MbtaRoutesController extends ControllerBase {
    * {@inheritdoc}
    *
    *  @return array
+   *   returns a render array for the MBTA Routes table.
    *
    * */
   public function build() {
@@ -62,21 +63,32 @@ class MbtaRoutesController extends ControllerBase {
 
     $rows = [];
 
-    foreach ($response->data as $route) {
-      $rows[] = [
-        'name' => $route->attributes->long_name,
-        'color' => $route->attributes->color,
-        'text_color' => $route->attributes->text_color,
-      ];
-    }
 
-    return [
-      'table' => [
-        '#theme' => 'table',
-        '#rows' => $rows,
-      ],
+    foreach ($response->data as $route) {
+      $color = $route->attributes->color;
+      $text_color = $route->attributes->text_color;
+
+
+
+      $rows[] = [
+            'id' => $route->id,
+            'name' => ['markup' => $text_color],
+            'color' => ['#markup' => 'background-color: ' . $color . '; color: ' . $text_color . ';'],
+        ];
+    }
+    $header = [
+        'id' => 'ID',
+        'name' => 'Name',
+        'color' => 'Color',
     ];
 
- }
-
+    return [
+        'table' => [
+            '#theme' => 'table',
+            '#header' => $header,
+            '#rows' => $rows,
+        ],
+    ];
 }
+
+  }
