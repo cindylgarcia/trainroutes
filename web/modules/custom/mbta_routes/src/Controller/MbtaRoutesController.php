@@ -63,12 +63,21 @@ class MbtaRoutesController extends ControllerBase {
     $rows = [];
 
     foreach ($response->data as $route) {
+      $color = $route->attributes->color;
+      $name = $route->attributes->long_name;
+
+
       $rows[] = [
-        'name' => $route->attributes->long_name,
-        'color' => $route->attributes->color,
-        'text_color' => $route->attributes->text_color,
+        'name' => $name,
+        '$cells' => [
+          '#tag' =>'background-color: ' . $color,
+        ],
       ];
-    }
+
+
+}
+
+
 
     return [
       'table' => [
