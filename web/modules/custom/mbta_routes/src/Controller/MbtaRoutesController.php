@@ -36,7 +36,7 @@ class MbtaRoutesController extends ControllerBase {
   public function __construct(ClientInterface $http_client) {
     $this->httpClient = $http_client;
 
-}
+  }
 
   /**
    * {@inheritdoc}
@@ -54,6 +54,7 @@ class MbtaRoutesController extends ControllerBase {
    * {@inheritdoc}
    *
    *  @return array
+   *   A simple renderable array.
    *
    * */
   public function build() {
@@ -64,28 +65,24 @@ class MbtaRoutesController extends ControllerBase {
 
     foreach ($response->data as $route) {
       $color = $route->attributes->color;
-      $name = $route->attributes->long_name;
-
 
       $rows[] = [
-        'name' => $name,
-        '$cells' => [
-          '#tag' =>'background-color: ' . $color,
+        'data' => [
+          $route->attributes->long_name,
         ],
+        'style' => 'background-color: #' . $color . '; color: #fff;',
       ];
 
+    }
 
-}
-
-
-
-    return [
-      'table' => [
-        '#theme' => 'table',
-        '#rows' => $rows,
-      ],
+    $build = [
+      '#type' => 'table',
+      '#header' => ['Route'],
+      '#rows' => $rows,
     ];
 
- }
+    return $build;
+
+  }
 
 }

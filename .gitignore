@@ -9,5 +9,6 @@
 /web/.
 /web/sites/default/.DS_Store
 /web/modules/custom/.DS_Store
+/files
 
 *.sql.gz
