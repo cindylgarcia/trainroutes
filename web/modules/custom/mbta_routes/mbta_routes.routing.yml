@@ -1,7 +1,15 @@
 mbta_routes_path:
   path: 'mbta-routes'
   defaults:
-    _title: 'MbtaRoutes'
+    _title: 'Routes'
     _controller: '\Drupal\mbta_routes\Controller\MbtaRoutesController::build'
+  requirements:
+    _permission: 'access content'
+
+mbta_routes_schedule:
+  path: 'mbta-schedule/{route}'
+  defaults:
+    _title: 'Mbta Schedule'
+    _controller: '\Drupal\mbta_routes\Controller\MbtaRoutesController::schedulePage'
   requirements:
     _permission: 'access content'
